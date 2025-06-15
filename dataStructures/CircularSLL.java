@@ -1,11 +1,9 @@
 package datastructures;
 
-/**
- * This class represents an unsorted linked list (the most basic form)
- */
-public class LinkedList<T> {
+public class CircularSLL<T> {
 
     Node head = null;
+    Node tail = null;
     int length = 0;
 
     public class Node {
@@ -20,22 +18,33 @@ public class LinkedList<T> {
 
     public void insertAtStart(T data) {
         Node newNode = new Node(data);
-        newNode.next = this.head;
-        this.head = newNode;
+
+        if (this.head == null) {
+            // if list is empty
+            this.head = newNode;
+            this.tail = newNode;
+            newNode.next = newNode; // point to itself
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+            this.tail.next = this.head; // point to the next Node
+        }
+
         this.length++;
     }
 
     public void insertAtEnd(T data) {
         Node newNode = new Node(data);
+
         if (this.head == null) {
+            // if list is empty
             this.head = newNode;
+            this.tail = newNode;
+            newNode.next = newNode; // point to itself
         } else {
-            Node currentNode = this.head;
-            // Traverse to the end of the LinkedList
-            while (currentNode.next != null) {
-                currentNode = currentNode.next;
-            }
-            currentNode.next = newNode;
+            this.tail.next = newNode;
+            newNode.next = this.head; // point to the next Node
+            this.tail = newNode; // overwrite tail
         }
         this.length++;
 
@@ -48,9 +57,10 @@ public class LinkedList<T> {
             if (index == 0) {
                 // Insert at start
                 insertAtStart(data);
-                return; // return to prevent double increment of length
+            } else if (index == length) {
+                // Insert at end
+                insertAtEnd(data);
             } else {
-                // Traverse to the index and insert
                 Node newNode = new Node(data);
                 Node currentNode = this.head;
                 for (int i = 0; i < index - 1; i++) {
@@ -58,8 +68,8 @@ public class LinkedList<T> {
                 }
                 newNode.next = currentNode.next;
                 currentNode.next = newNode;
+                this.length++;
             }
-            this.length++;
         } else {
             System.out.println("Unable to insert node");
         }
@@ -73,8 +83,15 @@ public class LinkedList<T> {
             if (index == 0) {
                 // Remove the head from the linked list to be garbage collected
                 data = this.head.data;
-                this.head = this.head.next;
-                return data;
+
+                if (this.head == this.tail) {
+                    // Only one node
+                    this.head = null;
+                    this.tail = null;
+                } else {
+                    this.head = this.head.next;
+                    this.tail.next = this.head; // Maintain circle
+                }
             } else {
                 // Traverse to the index and delete currentNode
                 Node currentNode = this.head;
@@ -82,6 +99,11 @@ public class LinkedList<T> {
                     currentNode = currentNode.next;
                 }
                 data = currentNode.next.data;
+                // if currentNode.next is the tail, that means it's the last element of the list
+                // & we need to overwrite tail
+                if (currentNode.next == this.tail) {
+                    this.tail = currentNode;
+                }
                 currentNode.next = currentNode.next.next;
             }
             this.length--;
@@ -93,26 +115,31 @@ public class LinkedList<T> {
     }
 
     public static void main (String[] args) {
-        LinkedList<String> strings = new LinkedList<>();
+        CircularSLL<String> strings = new CircularSLL<>();
 
         strings.insertAtStart("this is the first created element, made from insertAtStart");
         strings.insertAtStart("This is the second created element, made from insertAtStart");
         strings.insertAtPosition("This is the third created element, made from insertAtPosition with index=1", 1);
         strings.insertAtEnd("This is the fourth created element, made from insertAtEnd");
 
-        LinkedList<String>.Node current = strings.head;
-        while (current != null) {
+        CircularSLL<String>.Node current = strings.head;
+        int i = 10;
+        while (current != null && i > 0) {
             System.out.println(current.data);
             current = current.next;
+            i--;
         }
         System.out.print("\n\n");
 
         strings.deleteAtPosition(0);
         current = strings.head;
-        while (current != null) {
+        i = 10;
+        while (current != null && i > 0) {
             System.out.println(current.data);
             current = current.next;
+            i--;
         }
         System.out.print("\n\n");
     }
+    
 }
