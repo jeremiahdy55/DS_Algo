@@ -68,7 +68,7 @@ public class LinkedList<T> {
     public T deleteAtPosition(int index) {
         // Assume 0-based indexing, like with arrays
         // if the index is not of bounds
-        T data = null;
+        T data;
         if (index >= 0 && index < length) {
             if (index == 0) {
                 // Remove the head from the linked list to be garbage collected
