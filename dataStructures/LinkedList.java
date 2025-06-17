@@ -5,12 +5,12 @@ package datastructures;
  */
 public class LinkedList<T> {
 
-    Node head = null;
-    int length = 0;
+    public Node head = null;
+    public int length = 0;
 
     public class Node {
-        T data;
-        Node next;
+        public T data;
+        public Node next;
 
         public Node(T data) {
             this.data = data;
