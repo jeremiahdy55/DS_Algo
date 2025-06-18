@@ -128,6 +128,7 @@ public class june17 {
         return true;
     }
 
+    /// Problem 3 implementation
     public static <T> void deleteAtDifference(LinkedList<T> list, int difference) {
         LinkedList<T>.Node current = list.head;
         while (current != null && current.next != null) {
