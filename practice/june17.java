@@ -1,6 +1,6 @@
 package practice;
 
-import datastructures.LinkedList;
+import dataStructures.LinkedList;
 import java.util.Comparator;
 
 public class june17 {
