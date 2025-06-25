@@ -154,7 +154,7 @@ public class DoublySortedLL<T> {
 
     public T deleteAtPosition(int index) {
         // Assume 0-based indexing, like with arrays
-        T data = null;
+        T data;
         // if the index is not of bounds
         if (index >= 0 && index < length) {
             if (index == 0) {

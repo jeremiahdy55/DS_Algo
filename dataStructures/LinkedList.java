@@ -74,6 +74,7 @@ public class LinkedList<T> {
                 // Remove the head from the linked list to be garbage collected
                 data = this.head.data;
                 this.head = this.head.next;
+                this.length--;
                 return data;
             } else {
                 // Traverse to the index and delete currentNode
