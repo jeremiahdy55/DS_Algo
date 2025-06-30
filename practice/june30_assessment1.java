@@ -12,6 +12,7 @@ public class june30_assessment1 {
     }
 
     // Task: find pairs on integer array whose sum is equal to k
+    // Brute force: O(n^2)
     public static String findPairsThatSumK(int[] arr, int k) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
