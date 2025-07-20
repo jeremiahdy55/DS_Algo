@@ -1,4 +1,4 @@
-package dataStructures;
+package dsalgo.datastructures;
 
 /**
  * This class represents an unsorted linked list (the most basic form)

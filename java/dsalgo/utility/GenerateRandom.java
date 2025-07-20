@@ -1,6 +1,5 @@
-package utility;
+package dsalgo.utility;
 
-import java.lang.Math;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 

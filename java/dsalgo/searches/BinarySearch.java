@@ -1,9 +1,9 @@
-package searches;
+package dsalgo.searches;
 
+import dsalgo.sorts.QuickSort;
+import dsalgo.utility.GenerateRandom;
 import java.util.Arrays;
 import java.util.Comparator;
-import sorts.QuickSort;
-import utility.GenerateRandom;
 
 public class BinarySearch {
     // Returns the index of the element in the array if found (if duplicates, returns the first found), otherwise -1

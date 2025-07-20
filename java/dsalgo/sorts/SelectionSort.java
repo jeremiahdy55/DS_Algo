@@ -1,9 +1,8 @@
-package sorts;
+package dsalgo.sorts;
 
 import java.util.Arrays;
 import java.util.Comparator;
-
-import utility.GenerateRandom;
+import dsalgo.utility.GenerateRandom;
 
 public class SelectionSort {
 

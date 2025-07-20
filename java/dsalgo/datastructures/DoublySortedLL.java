@@ -1,4 +1,4 @@
-package dataStructures;
+package dsalgo.datastructures;
 
 import java.util.Comparator;
 

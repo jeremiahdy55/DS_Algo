@@ -1,8 +1,8 @@
-package dataStructures;
+package dsalgo.datastructures;
 
+import dsalgo.utility.GenerateRandom;
 import java.util.Arrays;
 import java.util.Comparator;
-import utility.GenerateRandom;
 
 // This is an implementation of creating a single sorted linked list
 // without duplicates given a random unsorted array.

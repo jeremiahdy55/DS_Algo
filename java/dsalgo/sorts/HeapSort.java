@@ -1,4 +1,4 @@
-package sorts;
+package dsalgo.sorts;
 
 import java.util.Comparator;
 
